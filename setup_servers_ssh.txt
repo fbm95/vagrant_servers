@@ -1,0 +1,17 @@
+cream un user nou jenkins
+	sudo adduser jenkins
+
+adaugam userul la grupul de sudo-ers
+	sudo adduser jenkins sudo
+
+cream folderul /home/jenkins/.ssh
+	sudo mkdir /home/jenkins/.ssh
+
+modificam permisiunile pentru folderul creat
+	sudo chmod 700 /home/jenkins/.ssh
+
+modificam ownership-ul pentru folderul nou creat
+	sudo chown jenkins:jenkins /home/jenkins/.ssh
+
+adaugam cheia publica 
+	sudo cat /vagrant/ssh_keys/jenkins_docker.pub >> .ssh/authorized_keys

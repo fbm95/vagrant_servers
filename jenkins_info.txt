@@ -1,0 +1,11 @@
+JAVA_HOME: /usr/lib/jvm/java-8-openjdk-amd64
+MAVEN_HOME: /usr/share/maven
+
+PLUGINS:
+Post-Build Script Plug-in (it will allow us to run shell commands and scripts after the build step)
+Publish over SSH (copy file to remote server and execute command on it)
+
+
+
+Docker Swarm
+
