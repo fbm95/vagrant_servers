@@ -1,0 +1,1 @@
+{"virtualbox":{"/srv/salt":{"guestpath":"/srv/salt","hostpath":"D:/licentav2/saltstack/salt","disabled":false,"__vagrantfile":true},"/srv/pillar":{"guestpath":"/srv/pillar","hostpath":"D:/licentav2/saltstack/pillar","disabled":false,"__vagrantfile":true},"/vagrant":{"guestpath":"/vagrant","hostpath":"D:/licentav2","disabled":false,"__vagrantfile":true}}}

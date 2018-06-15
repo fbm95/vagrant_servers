@@ -1,0 +1,46 @@
+jenkins setup:
+	1. ca sa activam jenkins-ul el trebuie accesat: http://172.17.8.100:8080
+		apoi ne cere o parola stocata pe server. Pentru a optine parola facem 
+		ssh pe saltmaster si apoi: 
+			sudo cat /var/lib/jenkins/secrets/initialAdminPassword
+	
+	2. prefix-ul pentru jenkins este definit in fisierul jenkins din folderul 
+		vagrant-provision pe linia JENKINS_ARGS. Pentru a valida schimbarea 
+		prefixului de accesare facem ssh pe master si spoi: 
+				sudo service jenkins restart
+
+	3. dupa restart, jenkins va putea fi accesat prin: http://172.17.8.100:8080/jenkins
+		 
+ping salt minions: 
+	sudo salt '*' test.ping
+run all states:
+	sudo salt '*' state.highstate
+apply a state to specific minion:
+	sudo salt minion01 state.apply docker
+
+docker swarm:
+	maganer:172.17.8.101
+
+
+docker daemon service: /lib/systemd/system/docker.service
+
+start docker on all minions:
+	sudo salt '*' cmd.run 'sudo service docker start'
+	sudo salt 'minion01' cmd.run 'sudo docker start swarm-info'
+
+info about swarm:
+	https://docs.docker.com/engine/swarm/swarm-tutorial/#the-ip-address-of-the-manager-machine
+manage swarm nodes:
+	https://docs.docker.com/engine/swarm/manage-nodes/#inspect-an-individual-node
+swarm api:
+	https://docs.docker.com/swarm/swarm-api/
+	https://docs.docker.com/engine/api/v1.37/#operation/SwarmInspect
+swarm-visualizer container:
+	https://github.com/dockersamples/docker-swarm-visualizer
+
+containers: 
+	docker run -d --name mongo_voting -p 27017:27017/tcp mongo
+
+start microservices:
+	java -Dspring.data.mongodb.uri=mongodb://172.17.8.101:27017/votingapp -jar app-voting.jar
+	java -Dspring.data.mongodb.uri=mongodb://172.17.8.101:27017/votingapp -jar app-results.jar

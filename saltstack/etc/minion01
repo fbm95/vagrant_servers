@@ -1,0 +1,11 @@
+master: 172.17.8.100
+
+id: minion01
+
+file_roots:
+  base:
+    - /srv/salt
+
+pillar_roots:
+  base:
+    - /srv/pillar
