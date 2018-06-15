@@ -28,6 +28,9 @@ start docker on all minions:
 	sudo salt '*' cmd.run 'sudo service docker start'
 	sudo salt 'minion01' cmd.run 'sudo docker start swarm-info'
 
+create docker visualizer container:
+	docker run -it -d -n viz -p 5001:8080 -v /var/run/docker.sock:/var/run/docker.sock dockersamples/visualizer
+
 info about swarm:
 	https://docs.docker.com/engine/swarm/swarm-tutorial/#the-ip-address-of-the-manager-machine
 manage swarm nodes:

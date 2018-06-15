@@ -15,3 +15,8 @@ modificam ownership-ul pentru folderul nou creat
 
 adaugam cheia publica 
 	sudo cat /vagrant/ssh_keys/jenkins_docker.pub >> .ssh/authorized_keys
+
+am adaugat 
+	jenkins ALL=(ALL) NOPASSWD: ALL
+intr-un fisier nou /etc/sudoers.d/jenkins
+ca sa nu mai fine nevoie de parola cand facem sudo din aplicatia jenkins prin ssh
