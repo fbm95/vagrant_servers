@@ -24,18 +24,23 @@ run all states:
 apply a state to specific minion:
 	sudo salt minion01 state.apply docker
 
+
 docker swarm:
-	maganer:172.17.8.101
+	maganer: 172.17.8.101
+	worker1: 172.17.8.102
+	worker2: 172.17.8.103
+
 
 
 docker daemon service: /lib/systemd/system/docker.service
+
 
 start docker on all minions:
 	sudo salt '*' cmd.run 'sudo service docker start'
 	sudo salt 'minion01' cmd.run 'sudo docker start swarm-info'
 
-create docker visualizer container:
-	docker run -it -d -n viz -p 5001:8080 -v /var/run/docker.sock:/var/run/docker.sock dockersamples/visualizer
+
+
 
 info about swarm:
 	https://docs.docker.com/engine/swarm/swarm-tutorial/#the-ip-address-of-the-manager-machine
@@ -47,8 +52,16 @@ swarm api:
 swarm-visualizer container:
 	https://github.com/dockersamples/docker-swarm-visualizer
 
+
+
 containers: 
 	docker run -d --name mongo_voting -p 27017:27017/tcp mongo
+create docker visualizer container:
+	docker run -it -d -n viz -p 5001:8080 -v /var/run/docker.sock:/var/run/docker.sock dockersamples/visualizer
+
+
+
+
 
 start microservices:
 	java -Dspring.data.mongodb.uri=mongodb://172.17.8.101:27017/votingapp -jar app-voting.jar

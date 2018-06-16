@@ -1,0 +1,17 @@
+---
+version: "3"
+
+services:
+  db:
+    image: mongo
+    ports:
+      - 27017:27017
+    deploy:
+      replicas: 2
+      update_config:
+        parallelism: 2
+      restart_policy:
+        condition: on-failure
+
+# docker run -d --name mongo_voting -p 27017:27017 mongo
+# docker stack deploy --compose-file docker-stack.yml mongo_voting
