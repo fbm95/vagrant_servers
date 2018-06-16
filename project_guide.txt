@@ -1,3 +1,9 @@
+access voting app:
+	http://172.17.8.101:8081
+
+acces show container ID:
+	http://172.17.8.101:1221/host
+
 jenkins setup:
 	1. ca sa activam jenkins-ul el trebuie accesat: http://172.17.8.100:8080
 		apoi ne cere o parola stocata pe server. Pentru a optine parola facem 
