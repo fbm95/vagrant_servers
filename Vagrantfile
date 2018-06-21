@@ -4,6 +4,8 @@ Vagrant.configure(2) do |config|
     
     master_config.vm.network "forwarded_port", guest: 8080, host: 8080
     master_config.vm.network "forwarded_port", guest: 50000, host: 50000
+#https://www.vagrantup.com/docs/networking/private_network.html
+    master_config.vm.network "private_network", ip: "172.17.8.100"
 
     master_config.vm.provider "virtualbox" do |vb|
       vb.memory = "2048"
@@ -12,12 +14,10 @@ Vagrant.configure(2) do |config|
     end
 
     master_config.vm.box = "ubuntu/xenial64"
-    master_config.vm.host_name = 'saltmaster.local'
-    #https://www.vagrantup.com/docs/networking/private_network.html
-    master_config.vm.network "private_network", ip: "172.17.8.100"
+    master_config.vm.hostname = 'saltmaster.local'
+    
     master_config.vm.synced_folder "saltstack/salt/", "/srv/salt"
     master_config.vm.synced_folder "saltstack/pillar/", "/srv/pillar"
-
     #https://www.vagrantup.com/docs/provisioning/salt.html
     master_config.vm.provision :salt do |salt|
       salt.master_config = "saltstack/etc/master"
@@ -58,7 +58,7 @@ Vagrant.configure(2) do |config|
     minion_config.vm.network :forwarded_port, guest: 2376, host: 2376
 
     #swarm visualizer
-    minion_config.vm.network :forwarded_port, guest: 5000, host: 5000
+    minion_config.vm.network :forwarded_port, guest: 5001, host: 5001
 
     minion_config.vm.provider "virtualbox" do |vb|
       vb.memory = "2048"

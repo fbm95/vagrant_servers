@@ -6,6 +6,3 @@ Post-Build Script Plug-in (it will allow us to run shell commands and scripts af
 Publish over SSH (copy file to remote server and execute command on it)
 
 
-
-Docker Swarm
-
